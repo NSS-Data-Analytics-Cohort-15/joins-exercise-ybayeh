@@ -104,18 +104,21 @@ ORDER BY rating.imdb_rating DESC;
 SELECT
 		specs.film_title
 	,	specs.length_in_min/60 AS length_in_hours
-	,	AVG(rating.imdb_rating)
+	,	AVG(rating.imdb_rating) AS avg_imdb_rating
 FROM specs
 	INNER JOIN rating
 		USING(movie_id)
 WHERE  specs.length_in_min/60 > 2
 	OR specs.length_in_min/60 < 2
 GROUP BY specs.film_title, length_in_hours
-ORDER BY AVG(rating.imdb_rating) DESC
-LIMIT 5;
+ORDER BY AVG(rating.imdb_rating) DESC;
 
 --Answer:
-	"film_title"				"length_in_hours"	"avg"
-	"The Lord of the Rings: 	
-	The Return of the King"				3			8.9000000000000000
-	"Schindler's List"					3			8.9000000000000000
+	"film_title"		"length_in_hours"	"avg_imdb_rating"
+"Schindler's List"				3			8.9000000000000000
+"The Lord of the Rings: 
+The Return of the King"			3			8.9000000000000000
+
+
+
+
